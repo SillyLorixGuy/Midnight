@@ -1,13 +1,53 @@
 const entryButton = document.querySelector('button');
 const entryTextarea = document.getElementById('entry');
 const USER = 'Lori';
+const currentRadio = document.getElementById('current-day');
+const pastRadio = document.getElementById('past-day');
+const dayInput = document.getElementById('entry-date-day');
+const monthInput = document.getElementById('entry-date-month');
+const yearInput = document.getElementById('entry-date-year');
+const errorMsg = document.querySelector('.error');
+
+// Limit input values for day/month/year
+dayInput.setAttribute('min', '1');
+dayInput.setAttribute('max', '31');
+monthInput.setAttribute('min', '1');
+monthInput.setAttribute('max', '12');
+yearInput.setAttribute('min', '1900');
+yearInput.setAttribute('max', new Date().getFullYear());
+
+function isValidDate(year, month, day) {
+  const d = new Date(year, month - 1, day);
+  return d.getFullYear() == year && (d.getMonth() + 1) == month && d.getDate() == day;
+}
 
 entryButton.addEventListener('click', function() {
     const content = entryTextarea.value.trim();
     if (!content) return alert('Please enter something!');
-    const now = new Date();
-    const date = now.toISOString().slice(0, 10); // YYYY-MM-DD
-    const time = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0'); // HH:MM
+    let date, time;
+    errorMsg.style.display = 'none';
+
+    if (currentRadio.checked) {
+        const now = new Date();
+        date = now.toISOString().slice(0, 10); // YYYY-MM-DD
+        time = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0'); // HH:MM
+    } else if (pastRadio.checked) {
+        const day = parseInt(dayInput.value, 10);
+        const month = parseInt(monthInput.value, 10);
+        const year = parseInt(yearInput.value, 10);
+        if (
+            isNaN(day) || isNaN(month) || isNaN(year) ||
+            !isValidDate(year, month, day)
+        ) {
+            errorMsg.style.display = 'block';
+            return;
+        }
+        date = year.toString().padStart(4, '0') + '-' + month.toString().padStart(2, '0') + '-' + day.toString().padStart(2, '0');
+        time = '00:00';
+    } else {
+        alert('Please select a date option.');
+        return;
+    }
 
     entryButton.disabled = true;
     entryButton.innerText = 'Submitted!';
