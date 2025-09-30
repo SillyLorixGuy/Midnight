@@ -1,5 +1,6 @@
 const entryButton = document.querySelector('button');
 const entryTextarea = document.getElementById('entry');
+const moodInput = document.getElementById('mood');
 const USER = 'Lori';
 const currentRadio = document.getElementById('current-day');
 const pastRadio = document.getElementById('past-day');
@@ -23,10 +24,17 @@ function isValidDate(year, month, day) {
 
 entryButton.addEventListener('click', function() {
     const content = entryTextarea.value.trim();
-    if (!content) return alert('Please enter something!');
-    let date, time;
+    const moodValue = parseInt(moodInput.value, 10);
     errorMsg.style.display = 'none';
 
+    if (!content) return alert('Please enter something!');
+    if (isNaN(moodValue) || moodValue < 0 || moodValue > 100) {
+        errorMsg.textContent = '*ERROR - invalid mood number*';
+        errorMsg.style.display = 'block';
+        return;
+    }
+
+    let date, time;
     if (currentRadio.checked) {
         const now = new Date();
         date = now.toISOString().slice(0, 10); // YYYY-MM-DD
@@ -39,6 +47,7 @@ entryButton.addEventListener('click', function() {
             isNaN(day) || isNaN(month) || isNaN(year) ||
             !isValidDate(year, month, day)
         ) {
+            errorMsg.textContent = '*ERROR - invalid date*';
             errorMsg.style.display = 'block';
             return;
         }
@@ -55,11 +64,12 @@ entryButton.addEventListener('click', function() {
     fetch('/api/log-entry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user: USER, date, time, content })
+        body: JSON.stringify({ user: USER, date, time, content, mood: moodValue })
     })
     .then(res => res.json())
     .then(data => {
         entryTextarea.value = '';
+        moodInput.value = '';
         setTimeout(() => {
             entryButton.disabled = false;
             entryButton.innerText = 'Submit';

@@ -33,9 +33,15 @@
                     <p class="error">*ERROR - invalid date*</p>
                 </div>
                 <textarea name="diary-entry" id="entry" placeholder="What happened today?"></textarea>
-                <button>
-                    <p>Submit</p>
-                </button>
+                <div class="submit-section">
+                    <div class="mood-input">
+                        <p class="glow70">What's your mood?</p>
+                        <input type="number" id="mood" name="mood" min="0" max="100" step="1" required>
+                    </div>
+                    <button>
+                        <p>Submit</p>
+                    </button>
+                </div>
             </div>
         </section>
     </main>

@@ -10,11 +10,9 @@
 
 .content div{
     align-items: center;
-    width: 100%;
 }
 .content div button{
     width: 10rem;
-    margin-left: 83%;
 }
 .date-inputs{
     padding: 0 5%;
@@ -39,10 +37,11 @@
 .error{
     margin-top: 2rem;
     color: red;
-    font-size: 1rem;
+    font-size: 0.8rem;
     display: none;
     margin-left: 1rem;
     align-self: center;
+    width: 20%;
 }
 input[type="radio"]{
     appearance: none;
@@ -89,8 +88,28 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-
+.mood-input{
+    display: flex;
+    gap: 1rem;
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+}
+.mood-input p{
+    font-size: 1.3rem;
+    margin-left: 5%;
+}
+.mood-input input[type="number"]{
+    margin-top: 0;
+    width: 6rem;
+    font-size: 1.3rem;
+    background-color: #222;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    box-shadow: 0 0 5px #888;
+}
 textarea{
     margin-top: 2rem;
     width: 90%;
@@ -107,8 +126,19 @@ textarea{
     color: rgb(175, 175, 175);
     opacity: 0.7;
 }
+.submit-section{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+.submit-section p{
+    margin-left: 5%;
+    
+}
 button{
     margin-top: 1rem;
+    margin-right: 5%;
     padding: 0.5rem 1rem;
     background-color: #333333;
     border: none;
