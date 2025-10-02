@@ -1,5 +1,6 @@
 const entryButton = document.querySelector('button');
 const entryTextarea = document.getElementById('entry');
+const titleInput = document.querySelector('.entry-input input[type="text"]');
 const moodInput = document.getElementById('mood');
 const USER = 'Lori';
 const currentRadio = document.getElementById('current-day');
@@ -24,6 +25,7 @@ function isValidDate(year, month, day) {
 
 entryButton.addEventListener('click', function() {
     const content = entryTextarea.value.trim();
+    const title = titleInput.value.trim();
     const moodValue = parseInt(moodInput.value, 10);
     errorMsg.style.display = 'none';
 
@@ -64,11 +66,12 @@ entryButton.addEventListener('click', function() {
     fetch('/api/log-entry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user: USER, date, time, content, mood: moodValue })
+        body: JSON.stringify({ user: USER, date, time, title, content, mood: moodValue })
     })
     .then(res => res.json())
     .then(data => {
         entryTextarea.value = '';
+        titleInput.value = '';
         moodInput.value = '';
         setTimeout(() => {
             entryButton.disabled = false;

@@ -40,6 +40,8 @@ main{
     min-height: 90vh;
     background-color: var(--background-color);
     box-shadow: #424242 0px 0px 50px 0px;
+    padding-bottom: 4rem;
+
 }
 nav{
     display: flex;
@@ -76,6 +78,6 @@ footer{
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    position: absolute;
-    bottom: -20vh;
+    position: static;
+    bottom: 0;
 }

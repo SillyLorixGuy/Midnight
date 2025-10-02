@@ -57,3 +57,29 @@
 /*.stats .chart{
 
 }
+*/
+.entries{
+    display: flex;
+    justify-content: center;
+}
+.entry{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 90%;
+    background-color: #1a1a1a;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 0 10px rgb(105, 105, 105);    
+    padding: 1rem;  
+}
+.entry .profile p{
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+.entry-content p{
+    font-size: 1.1rem;
+}

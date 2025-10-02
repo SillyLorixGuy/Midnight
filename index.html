@@ -23,7 +23,7 @@
     <main>
         <section class="content">
             <p class="glow"></p>
-            <div>
+            <div class="container">
                 <div class="date-inputs">
                     <label>Use current date</label><input type="radio" id="current-day" name="date-selector" checked>
                     <label>Use past date</label><input type="radio" id="past-day" name="date-selector">
@@ -32,10 +32,13 @@
                     <input type="number" id="entry-date-year" placeholder="YYYY">
                     <p class="error">*ERROR - invalid date*</p>
                 </div>
+                <section class="entry-input">
+                    <input type="text" placeholder="Have a title for today?">
                 <textarea name="diary-entry" id="entry" placeholder="What happened today?"></textarea>
+                </section>
                 <div class="submit-section">
                     <div class="mood-input">
-                        <p class="glow70">What's your mood?</p>
+                        <p class="glow70">How was today?</p>
                         <input type="number" id="mood" name="mood" min="0" max="100" step="1" required>
                     </div>
                     <button>
