@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "name": "Lori",
+      "info": {
+        "mentalScore": 0,
+        "entries": 0,
+        "streak": 0 
+      }
+    }
+  ]
+}

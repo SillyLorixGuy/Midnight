@@ -81,3 +81,10 @@ footer{
     position: static;
     bottom: 0;
 }
+
+textarea:focus {
+    outline: none;
+}
+input:focus{
+    outline: none;
+} 

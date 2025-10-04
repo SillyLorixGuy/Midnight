@@ -7,11 +7,11 @@ app.use(express.json());
 const LOG_PATH = path.join(__dirname, 'entries', 'log.json');
 
 app.post('/api/log-entry', (req, res) => {
-    const { user, date, time, content } = req.body;
+    const { user, date, time, title, content, mood } = req.body;
     fs.readFile(LOG_PATH, 'utf8', (err, data) => {
         if (err) return res.status(500).send('Read error');
         let log = JSON.parse(data);
-        log.entries.push({ user, date, time, content });
+        log.entries.push({ user, date, time, title, content, mood });
         fs.writeFile(LOG_PATH, JSON.stringify(log, null, 2), err => {
             if (err) return res.status(500).send('Write error');
             res.json({ success: true });

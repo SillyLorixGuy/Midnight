@@ -1,5 +1,4 @@
-
-.content{
+.content {
     color: white;
     display: block;
     text-align: center;
@@ -8,18 +7,25 @@
     width: 100%;
 }
 
-.content div{
+.content div {
     align-items: center;
 }
-.content div button{
+
+.container .date-inputs {
+    align-self: flex-start;
+}
+
+.content div button {
     width: 10rem;
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.date-inputs{
+
+.date-inputs {
     padding: 0 5%;
     display: flex;
     justify-content: flex-start;
@@ -27,19 +33,22 @@
     gap: 0.75rem;
     margin-top: 1rem;
 }
-.date-inputs label:first-child{
+
+.date-inputs label:first-child {
     margin-top: 2rem;
     align-self: center;
     font-size: 1.2rem;
     color: rgb(175, 175, 175);
 }
-.date-inputs label:nth-child(3){
+
+.date-inputs label:nth-child(3) {
     margin-top: 2rem;
     align-self: center;
     font-size: 1.2rem;
     color: rgb(175, 175, 175);
 }
-.error{
+
+.error {
     margin-top: 2rem;
     color: red;
     font-size: 0.8rem;
@@ -48,7 +57,8 @@
     align-self: center;
     width: 20%;
 }
-input[type="radio"]{
+
+input[type="radio"] {
     appearance: none;
     margin-top: 2rem;
     margin-right: .5rem;
@@ -64,14 +74,17 @@ input[type="radio"]{
     cursor: pointer;
     transition: 0.3s ease-out;
 }
-input[type="radio"]:nth-child(2){
+
+input[type="radio"]:nth-child(2) {
     margin-right: 2rem;
 }
-input[type="radio"]:checked{
+
+input[type="radio"]:checked {
     transition: 0.1s ease-out;
     border: .75rem solid rgb(150, 150, 150);
 }
-input[type="number"]{
+
+input[type="number"] {
     margin-top: 2rem;
     width: 2rem;
     height: 1rem;
@@ -80,29 +93,34 @@ input[type="number"]{
     border-radius: 10px;
     color: rgb(95, 95, 95);
     font-size: 1.2rem;
-    box-shadow: 0 0 10px rgb(105, 105, 105);    
+    box-shadow: 0 0 10px rgb(105, 105, 105);
     padding: 1rem;
     text-align: center;
 }
-input[type="number"]#entry-date-year{
+
+input[type="number"]#entry-date-year {
     width: 4rem;
 }
+
 /* Num up and down arrow delete chromium*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
-.mood-input{
+
+.mood-input {
     display: flex;
     gap: 1rem;
     align-items: center;
     justify-content: center;
 }
-.mood-input p{
+
+.mood-input p {
     font-size: 1.3rem;
 }
-.mood-input input[type="number"]{
+
+.mood-input input[type="number"] {
     margin-top: 0;
     width: 6rem;
     font-size: 1.3rem;
@@ -113,49 +131,58 @@ input::-webkit-inner-spin-button {
     text-align: center;
     box-shadow: 0 0 5px #888;
 }
-.entry-input{
+
+.entry-input {
     display: flex;
     flex-direction: column;
-    background-color:#1a1a1a;
+    background-color: #1a1a1a;
     width: 90%;
     margin-top: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgb(105, 105, 105);    
+    box-shadow: 0 0 10px rgb(105, 105, 105);
     padding: 1rem;
 }
-.entry-input input[type="text"]{
+
+.entry-input input[type="text"] {
     background-color: #1a1a1a;
     border: none;
     font-size: 1.2rem;
     color: white;
     padding: 0.5rem 0;
-    border-bottom: solid 2px #606060 ;
+    border-bottom: solid 2px #606060;
 }
-textarea{
+
+textarea {
     min-height: 20rem;
     background-color: #1a1a1a;
     border: none;
     color: white;
     font-size: 1.2rem;
     margin-top: 1rem;
+    max-width: 100%;
+    min-width: 100%;
 }
-::placeholder{
+
+::placeholder {
     color: rgb(175, 175, 175);
     opacity: 0.7;
 }
-.submit-section{
+
+.submit-section {
     display: flex;
     justify-content: space-between;
+    width: 90%;
+    margin-top: 1rem;
+}
+
+.submit-section p:first-child {
     width: 100%;
-    margin-top: 1rem;
+
 }
-.submit-section p{
-    margin-left: 5%;
-    
-}
-button{
+
+button {
     margin-top: 1rem;
-    margin-right: 5%;
+
     padding: 0.5rem 1rem;
     background-color: #333333;
     border: none;
@@ -164,4 +191,10 @@ button{
     font-size: 1.2rem;
     cursor: pointer;
     box-shadow: 0 0 5px rgb(105, 105, 105);
+}
+
+@media (min-height: 1081px) {
+    main{
+        padding-bottom: 0;
+    }
 }
