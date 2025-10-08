@@ -119,4 +119,7 @@
         width: 100%;
         border-top:#616161 solid 2px;
     }
+    .entry{
+    width: 90%;
+}
 }
