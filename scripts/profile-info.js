@@ -71,11 +71,11 @@ async function updateUserInfo(userName) {
         daysMissed = totalDays - entries.length;
     }
     // Fill each div in order
-    if (infoDivs[0]) infoDivs[0].innerHTML = `<p class="glow70">Mental Score:</p> <span>${mentalScore}</span>`;
-    if (infoDivs[1]) infoDivs[1].innerHTML = `<p class="glow70">Total Entries:</p> <span>${entryCount}</span>`;
-    if (infoDivs[2]) infoDivs[2].innerHTML = `<p class="glow70">Current Streak:</p> <span>${streak}</span>`;
-    if (infoDivs[3]) infoDivs[3].innerHTML = `<p class="glow70">Best Streak:</p> <span>${bestStreak}</span>`;
-    if (infoDivs[4]) infoDivs[4].innerHTML = `<p class="glow70">Days Missed:</p> <span>${daysMissed}</span>`;
+    if (infoDivs[0]) infoDivs[0].innerHTML = `<p class="glow70">Mental Score:</p> <span style="align-self: center;">${mentalScore}</span>`;
+    if (infoDivs[1]) infoDivs[1].innerHTML = `<p class="glow70">Total Entries:</p> <span style="align-self: center;">${entryCount}</span>`;
+    if (infoDivs[2]) infoDivs[2].innerHTML = `<p class="glow70">Current Streak:</p> <span style="align-self: center;">${streak}</span>`;
+    if (infoDivs[3]) infoDivs[3].innerHTML = `<p class="glow70">Best Streak:</p> <span style="align-self: center;">${bestStreak}</span>`;
+    if (infoDivs[4]) infoDivs[4].innerHTML = `<p class="glow70">Days Missed:</p> <span style="align-self: center;">${daysMissed}</span>`;
     
         // Update user-info.json for this user
         if (user) {

@@ -7,35 +7,11 @@
   "entries": [
     {
       "user": "Lori",
-      "date": "2025-09-30",
-      "time": "12:42",
-      "content": ":3"
-    },
-    {
-      "user": "Lori",
-      "date": "2025-10-01",
-      "time": "00:04",
-      "title": ":3",
-      "content": ":3",
-      "mood": 100
-    },
-    {
-      "user": "Lori",
-      "date": "2025-10-02",
-      "time": "00:04",
-      "title": ":3",
-      "content": ":3",
-      "mood": 100
-    },
-
-
-    {
-      "user": "Lori",
-      "date": "2025-10-04",
-      "time": "00:04",
-      "title": ":3",
-      "content": ":3",
-      "mood": 100
+      "date": "2025-10-08",
+      "time": "10:43",
+      "title": "silly",
+      "content": "goofy",
+      "mood": 9
     }
   ]
 }

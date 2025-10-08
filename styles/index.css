@@ -12,7 +12,7 @@
 }
 
 .container .date-inputs {
-    align-self: flex-start;
+    align-self: center;
 }
 
 .content div button {
@@ -47,7 +47,13 @@
     font-size: 1.2rem;
     color: rgb(175, 175, 175);
 }
-
+.date-inputs div{
+    display: flex;
+    flex-direction: row;
+}
+.date-inputs div:nth-child(2){
+    gap: 0.3rem;
+}
 .error {
     margin-top: 2rem;
     color: red;
@@ -181,8 +187,6 @@ textarea {
 }
 
 button {
-    margin-top: 1rem;
-
     padding: 0.5rem 1rem;
     background-color: #333333;
     border: none;
@@ -193,8 +197,21 @@ button {
     box-shadow: 0 0 5px rgb(105, 105, 105);
 }
 
-@media (min-height: 1081px) {
-    main{
-        padding-bottom: 0;
+
+
+@media (max-width: 1080px){ 
+    .date-inputs{
+        flex-direction: column;
     }
+    .date-inputs div:nth-child(2){
+    gap: 0.5rem;
+    }
+    .submit-section{
+        width: 100%;
+        flex-direction: column;
+    }
+    button{
+        margin-top: 1rem;
+    }
+    
 }

@@ -43,6 +43,8 @@ main{
     padding-bottom: 4rem;
 
 }
+span{ text-align: center;
+vertical-align: middle;}
 nav{
     display: flex;
     width: 70%;
@@ -88,3 +90,17 @@ textarea:focus {
 input:focus{
     outline: none;
 } 
+@media (min-height: 1081px) {
+    main{
+        padding-bottom: 0;
+    }
+}
+
+@media (max-width: 1080px){
+    nav{
+        width: 100%;
+    }
+    main{
+        width: 100%;
+    }
+}

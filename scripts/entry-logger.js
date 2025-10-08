@@ -1,3 +1,4 @@
+console.log('[entry-logger] loaded at', new Date().toISOString());
 const entryButton = document.querySelector('button');
 const entryTextarea = document.getElementById('entry');
 const titleInput = document.querySelector('.entry-input input[type="text"]');

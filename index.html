@@ -25,11 +25,14 @@
             <p class="glow"></p>
             <div class="container">
                 <div class="date-inputs">
+                    <div>
                     <label>Use current date</label><input type="radio" id="current-day" name="date-selector" checked>
                     <label>Use past date</label><input type="radio" id="past-day" name="date-selector">
-                    <input type="number" id="entry-date-day" placeholder="DD">
+                    </div>
+                    <div><input type="number" id="entry-date-day" placeholder="DD">
                     <input type="number" id="entry-date-month" placeholder="MM">
                     <input type="number" id="entry-date-year" placeholder="YYYY">
+                    </div>
                     <p class="error">*ERROR - invalid date*</p>
                 </div>
                 <section class="entry-input">
