@@ -36,6 +36,7 @@ main{
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
+    max-width: 1280px;
     width: 70%;
     min-height: 90vh;
     background-color: var(--background-color);
@@ -48,6 +49,7 @@ vertical-align: middle;}
 nav{
     display: flex;
     width: 70%;
+    max-width: 1280px;
     background-color: var(--primary-color);
     justify-content: space-between;
     align-items: center;
@@ -92,7 +94,7 @@ input:focus{
 } 
 @media (min-height: 1081px) {
     main{
-        padding-bottom: 0;
+        padding-bottom: 1rem;
     }
 }
 

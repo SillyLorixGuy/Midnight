@@ -11,9 +11,6 @@
     align-items: center;
 }
 
-.container .date-inputs {
-    align-self: center;
-}
 
 .content div button {
     width: 10rem;
@@ -28,10 +25,11 @@
 .date-inputs {
     padding: 0 5%;
     display: flex;
+    align-self: flex-start;
     justify-content: flex-start;
-    flex-direction: row;
     gap: 0.75rem;
     margin-top: 1rem;
+    align-items: flex-start;
 }
 
 .date-inputs label:first-child {
@@ -53,6 +51,9 @@
 }
 .date-inputs div:nth-child(2){
     gap: 0.3rem;
+}
+.date{
+    align-self: left;
 }
 .error {
     margin-top: 2rem;
