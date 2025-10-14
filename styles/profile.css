@@ -85,11 +85,18 @@
     box-shadow: 0 0 10px rgb(105, 105, 105);    
     padding: 1rem;  
 }
+.entry .title{
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    font-size: 1.6rem;
+    padding-bottom: 2rem;
+}
 .entry .profile p{
     font-size: 1.7rem;
     font-weight: 600;
 }
 .entry-content p{
+    font-family:Arial, Helvetica, sans-serif;
     font-size: 1.   1rem;
 }
 @media (max-width: 1080px){
@@ -118,6 +125,9 @@
         justify-content: center;
         width: 100%;
         border-top:#616161 solid 2px;
+    }
+    .stats .info{
+    margin-right: 2rem;
     }
     .entry{
     width: 90%;

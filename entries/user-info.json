@@ -2,6 +2,7 @@
   "users": [
     {
       "name": "Lori",
+      "pfp-src": "pfps/Lori.png",
       "info": {
         "mentalScore": 0,
         "entries": 0,
