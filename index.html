@@ -11,13 +11,31 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/index.css">
     <title>Project Midnight</title>
+        <script>
+            // Auth guard: if no user in localStorage, force to login page
+            (function(){
+                try {
+                    var user = localStorage.getItem('midnight_user');
+                    // allow loading login page itself; this script is placed on protected pages only
+                    if (!user) {
+                        // Small safeguard: don't redirect if we're already on login.html
+                        if (!location.pathname.endsWith('/login.html') && !location.pathname.endsWith('login.html')) {
+                            location.href = '/login.html';
+                        }
+                    }
+                } catch (e) {
+                    // ignore storage errors
+                }
+            })();
+        </script>
 </head>
 
 <body>
     <nav>
         <a class="glow70" href="index.html">Midnight</a>
         <div class="profile">
-            <a href="profile.html"><img src="pfps/temp-pfp.png"></a> <!-- pfp taken from some database -->
+            <a href="profile.html"><img src="pfps/temp-pfp.png" alt="profile"></a> <!-- pfp taken from some database -->
+            <button id="logout-btn" aria-label="Logout" title="Logout">Logout</button>
         </div>
     </nav>
     <main>
@@ -52,9 +70,9 @@
         </section>
     </main>
     <footer>
-        <a href=""></a>
+        <a href="login.html">login</a>
     </footer>
-    <script src="scripts/entry-logger.js"></script>
++
     <script src="scripts/load-user-info.js"></script>
 </body>
 

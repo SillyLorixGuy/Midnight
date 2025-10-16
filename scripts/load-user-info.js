@@ -14,7 +14,13 @@
       const res = await fetch('/entries/user-info.json');
       if (!res.ok) throw new Error('Failed to fetch user-info.json: ' + res.status);
       const data = await res.json();
-      const user = (data && data.users && data.users[0]) || null;
+      const stored = localStorage.getItem('midnight_user');
+      let user = null;
+      if (stored && data && data.users) {
+        user = data.users.find(u => u.name === stored) || data.users[0];
+      } else {
+        user = (data && data.users && data.users[0]) || null;
+      }
       if (!user) {
         console.warn('No user found in user-info.json');
         return;
@@ -64,6 +70,17 @@
       if (navImg) {
         navImg.src = finalSrc;
         navImg.alt = (user.name || 'user') + ' profile picture';
+        // If there is a static logout button in the DOM, attach behavior to it
+        const logoutBtn = document.getElementById('logout-btn');
+        if (logoutBtn && !logoutBtn._bound) {
+          logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('midnight_user');
+            // redirect to login page after logout
+            window.location.href = '/login.html';
+          });
+          // mark as bound so we don't attach multiple listeners
+          logoutBtn._bound = true;
+        }
       }
 
       const profileImg = document.getElementById('profile-pfp');

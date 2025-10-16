@@ -11,13 +11,27 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/profile.css">
     <title>Project Midnight</title>
+        <script>
+            // Auth guard: if no user in localStorage, force to login page
+            (function(){
+                try {
+                    var user = localStorage.getItem('midnight_user');
+                    if (!user) {
+                        if (!location.pathname.endsWith('/login.html') && !location.pathname.endsWith('login.html')) {
+                            location.href = '/login.html';
+                        }
+                    }
+                } catch (e) {}
+            })();
+        </script>
 </head>
 
 <body>
     <nav>
         <a class="glow70" href="index.html">Midnight</a>
         <div class="profile">
-            <a href="profile.html"><img src="pfps/Lori.png"></a> <!-- pfp taken from some database -->
+            <a href="profile.html"><img src="pfps/Lori.png" alt="profile"></a> <!-- pfp taken from some database -->
+            <button id="logout-btn" aria-label="Logout" title="Logout">Logout</button>
         </div>
     </nav>
     <main>
@@ -25,7 +39,7 @@
             <section class="user-info">
                 <img id="profile-pfp" src="pfps/Lori.png" alt="profile picture">
                 <p class="username glow70">Lori</p>
-                <p class="bio glow70">I wan't to feel something real, in a world that feels so distant and cold</p> 
+                <p class="bio glow70">I wan't to feel something real, in a world that feels so distant and cold</p>
             </section>
             <section class="stats">
                 <div class="chart"></div>
@@ -38,15 +52,15 @@
                 </div>
             </section>
         </div>
-        <section class="entries" >
-       
+        <section class="entries">
+
         </section>
     </main>
     <footer>
-        
+
     </footer>
     <script src="scripts/profile-info.js"></script>
-    <script src="scripts/load-user-info.js"></script>   
+    <script src="scripts/load-user-info.js"></script>
     <script src="scripts/profile-entries.js"></script>
 </body>
 
