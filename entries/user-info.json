@@ -6,7 +6,9 @@
       "info": {
         "mentalScore": 0,
         "entries": 0,
-        "streak": 0 
+        "streak": 0,
+        "bestStreak": 0,
+        "daysMissed": 0
       }
     }
   ]

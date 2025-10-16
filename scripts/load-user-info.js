@@ -81,7 +81,9 @@
         const statsMap = {
           mentalScore: '[data-mental-score]',
           entries: '[data-entries-count]',
-          streak: '[data-streak]'
+          streak: '[data-streak]',
+          bestStreak: '[data-best-streak]',
+          missed: '[data-missed]'
         };
         Object.keys(statsMap).forEach(key => {
           const el = document.querySelector(statsMap[key]);
