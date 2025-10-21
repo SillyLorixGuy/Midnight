@@ -206,6 +206,7 @@
 
     .user-info .bio {
         text-align: center;
+        width: 90%;
     }
 
     .stats {

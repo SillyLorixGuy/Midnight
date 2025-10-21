@@ -1,5 +1,5 @@
 console.log('[entry-logger] loaded at', new Date().toISOString());
-const entryButton = document.querySelector('button');
+const entryButton = document.querySelector('#submit-button');
 const entryTextarea = document.getElementById('entry');
 const titleInput = document.querySelector('.entry-input input[type="text"]');
 const moodInput = document.getElementById('mood');

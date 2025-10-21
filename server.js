@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const app = express();
 app.use(express.json());
 
@@ -21,4 +22,23 @@ app.post('/api/log-entry', (req, res) => {
 
 app.use(express.static(__dirname)); // Serve your HTML/CSS/JS
 
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
+
+app.listen(PORT, HOST, () => {
+    // Find non-internal IPv4 addresses to show useful LAN URLs
+    const ifaces = os.networkInterfaces();
+    const addrs = [];
+    Object.values(ifaces).forEach(list => {
+        list.forEach(i => {
+            if (i.family === 'IPv4' && !i.internal) addrs.push(i.address);
+        });
+    });
+
+    console.log(`Server running on http://${HOST}:${PORT}`);
+    if (addrs.length) {
+        addrs.forEach(a => console.log(`Accessible on LAN: http://${a}:${PORT}`));
+    } else {
+        console.log('No non-internal IPv4 addresses found. If you cannot connect from your phone, check Windows firewall and ensure both devices are on the same network.');
+    }
+});

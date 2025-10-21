@@ -92,6 +92,10 @@ textarea:focus {
 input:focus{
     outline: none;
 } 
+#logout-btn{
+    margin-right: 2rem;
+    margin-top: 0;
+}
 @media (min-height: 1081px) {
     main{
         padding-bottom: 1rem;
@@ -104,5 +108,8 @@ input:focus{
     }
     main{
         width: 100%;
+    }
+    #logout-btn{
+        display: none;
     }
 }
