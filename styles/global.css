@@ -86,6 +86,17 @@ footer{
     bottom: 0;
 }
 
+button:nth-child(2) {
+    padding: 0.5rem 1rem;
+    background-color: #333333;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgb(105, 105, 105);
+}
+
 textarea:focus {
     outline: none;
 }

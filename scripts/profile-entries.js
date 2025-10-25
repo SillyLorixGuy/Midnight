@@ -56,7 +56,7 @@ function createEntryElement(entry, pfpSrc) {
             <div class="entry-top">
                 <div class="entry-user">
                     <img src="${pfpSrc}" alt="">
-                    <span class="entry-user-name">${entry.user}</span>
+                    <span class="glow70 entry-user-name">${entry.user}</span>
                 </div>
                 <div class="entry-footer-placeholder"></div>
             </div>
