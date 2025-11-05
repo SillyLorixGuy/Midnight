@@ -17,7 +17,6 @@ main{
     gap: 1rem;
     width: 90%;
     max-width: 500px;
-    height: 250px;
 }
 .login-box input {
     
@@ -38,7 +37,7 @@ main{
     color: #fff;
     cursor: pointer
 }
-.login-box button:hover, a:hover{
+.login-box button:hover{
     background: #545454;
     background-color: #545454;
 }
@@ -54,6 +53,10 @@ main{
     background: #333;
     color: #fff;
     cursor: pointer
+}
+.login-box a:hover{
+    background: #545454;
+    background-color: #545454;
 }
 .login-box h1 {
     text-align: center;
