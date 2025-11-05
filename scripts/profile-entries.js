@@ -79,7 +79,15 @@ async function loadEntries(userName) {
     const userEntries = log.entries.filter(e => e.user === userName);
     entriesSection.innerHTML = '';
     const pfp = await resolvePfp();
-    userEntries.reverse().forEach(entry => {
+    // Sort entries by date+time (newest first). If time missing, assume 00:00
+    userEntries.sort((a, b) => {
+        const ta = (a.time && a.time.length) ? a.time : '00:00';
+        const tb = (b.time && b.time.length) ? b.time : '00:00';
+        const da = new Date(`${a.date}T${ta}`);
+        const db = new Date(`${b.date}T${tb}`);
+        return db - da; // descending -> newest first
+    });
+    userEntries.forEach(entry => {
         entriesSection.appendChild(createEntryElement(entry, pfp));
     });
 
