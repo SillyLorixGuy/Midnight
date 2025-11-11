@@ -28,8 +28,8 @@ async function resolvePfp() {
             const filename = pfp.split('/').pop();
             if (filename) candidates.push(filename);
         }
-        candidates.push('pfps/temp-pfp.png');
-        candidates.push('temp-pfp.png');
+        candidates.push('pfps/Lori.png');
+        candidates.push('Lori.png');
 
         for (const c of candidates) {
             if (!c) continue;
@@ -39,7 +39,7 @@ async function resolvePfp() {
     } catch (err) {
         console.warn('resolvePfp error', err);
     }
-    return 'pfps/temp-pfp.png';
+    return 'pfps/Lori.png';
 }
 
 function formatDate(date, time) {

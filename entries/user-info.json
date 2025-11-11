@@ -1,14 +1,9 @@
 {
   "users": [
     {
-      "name": "Lori",
-      "pfp-src": "pfps/Lori.png",
-      "info": {
-        "mentalScore": 0,
-        "entries": 0,
-        "streak": 0,
-        "bestStreak": 0,
-        "daysMissed": 0
+      "Lori":{
+        "password": ":3",
+        "pfpSrc": "pfps/lori.png"
       }
     }
   ]
