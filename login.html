@@ -21,16 +21,16 @@
     <main>
         <section class="login-box">
             <h1 class="glow70">Sign in</h1>
-            <label for="username">Username</label>
-            <input id="username" type="text" placeholder="Enter username">
-            <label for="username">Password</label>
-            <input id="username" type="password" placeholder="Enter password">
+            <label for="identifier">Email or Username</label>
+            <input id="identifier" type="text" placeholder="Enter email or username">
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Enter password">
             <button id="login-btn">Sign in</button>
             <a href="register.html">Register</a>
         </section>
     </main>
     <footer></footer>
-    <script src="scripts/load-user-info.js"></script>
-    <script src="scripts/login.js"></script>
+    <script src="scripts/supabaseClient.js" type="module"></script>
+    <script src="scripts/login.js" type="module"></script>
 </body>
 </html>

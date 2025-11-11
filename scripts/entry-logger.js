@@ -1,3 +1,5 @@
+import { supabase } from './supabaseClient.js';
+
 console.log('[entry-logger] loaded at', new Date().toISOString());
 const entryButton = document.querySelector('#submit-button');
 const entryTextarea = document.getElementById('entry');

@@ -12,7 +12,7 @@
     <title>Project Midnight</title>
         <script>
             // Auth guard: if no user in localStorage, force to login page
-            (function(){
+            /*(function(){
                 try {
                     var user = localStorage.getItem('midnight_user');
                     // allow loading login page itself; this script is placed on protected pages only
@@ -25,7 +25,7 @@
                 } catch (e) {
                     // ignore storage errors
                 }
-            })();
+            })(); */
         </script>
 </head>
 
@@ -71,7 +71,7 @@
     <footer>
         <a href="login.html">login</a>
     </footer>
-    <script src="scripts/load-user-info.js"></script>
+    <script src="scripts/supabaseClient.js"></script>
     <script src="scripts/entry-logger.js"></script>
 </body>
 

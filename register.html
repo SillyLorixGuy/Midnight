@@ -9,26 +9,37 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
     <nav>
         <a class="glow70" href="index.html">Midnight</a>
         <div class="profile">
-            <a href="profile.html"><img src="pfps/temp-pfp.png"></a> <!-- pfp taken from some database -->
+            <a href="profile.html"><img src="pfps/temp-pfp.png"></a>
         </div>
     </nav>
     <main>
         <section class="login-box">
-            <h1 class="glow70">Sign in</h1>
+            <h1 class="glow70">Sign up</h1>
             <label for="username">Username</label>
             <input id="username" type="text" placeholder="Enter username">
-            <button href="register.html" id="regester-btn">Register</button>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Enter email">
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Enter password">
+            <label for="password2">Confirm Password</label>
+            <input id="password2" type="password" placeholder="Repeat password">
+            <label>Profile visibility</label>
+            <label><input type="radio" name="visibility" value="public" checked> Public</label>
+            <label><input type="radio" name="visibility" value="private"> Private</label>
+            <label for="pfp">Upload profile picture</label>
+            <input id="pfp" type="file" accept="image/*">
+            <button id="register-btn">Register</button>
             <a href="login.html">Sign in</a>
         </section>
     </main>
     <footer></footer>
-    <script src="scripts/load-user-info.js"></script>
-    <script src="scripts/login.js"></script>
+    <script src="scripts/supabaseClient.js" type="module"></script>
+    <script src="scripts/register.js" type="module"></script>
 </body>
 </html>
