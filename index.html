@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,23 +11,6 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/index.css">
     <title>Project Midnight</title>
-        <script>
-            // Auth guard: if no user in localStorage, force to login page
-            /*(function(){
-                try {
-                    var user = localStorage.getItem('midnight_user');
-                    // allow loading login page itself; this script is placed on protected pages only
-                    if (!user) {
-                        // Small safeguard: don't redirect if we're already on login.html
-                        if (!location.pathname.endsWith('/login.html') && !location.pathname.endsWith('login.html')) {
-                            location.href = '/login.html';
-                        }
-                    }
-                } catch (e) {
-                    // ignore storage errors
-                }
-            })(); */
-        </script>
 </head>
 
 <body>
@@ -43,12 +27,13 @@
             <div class="container">
                 <div class="date-inputs">
                     <div>
-                    <label>Use current date</label><input type="radio" id="current-day" name="date-selector" checked>
-                    <label>Use past date</label><input type="radio" id="past-day" name="date-selector">
+                        <label>Use current date</label><input type="radio" id="current-day" name="date-selector"
+                            checked>
+                        <label>Use past date</label><input type="radio" id="past-day" name="date-selector">
                     </div>
                     <div class="date"><input type="number" id="entry-date-day" placeholder="DD">
-                    <input type="number" id="entry-date-month" placeholder="MM">
-                    <input type="number" id="entry-date-year" placeholder="YYYY">
+                        <input type="number" id="entry-date-month" placeholder="MM">
+                        <input type="number" id="entry-date-year" placeholder="YYYY">
                     </div>
                     <p class="error">*ERROR - invalid date*</p>
                 </div>
@@ -71,8 +56,18 @@
     <footer>
         <a href="login.html">login</a>
     </footer>
-    <script src="scripts/supabaseClient.js"></script>
-    <script src="scripts/entry-logger.js"></script>
+    <script src="scripts/supabaseClient.js" type="module"></script>
+<script type="module">
+  import { isUserLoggedIn } from './scripts/supabaseClient.js';
+
+  (async function() {
+    const loggedIn = await isUserLoggedIn();
+    if (!loggedIn) {
+      window.location.href = 'login.html';
+    }
+  })();
+</script>
+    <script src="scripts/entry-logger.js" type="module"></script>
 </body>
 
 </html>

@@ -12,16 +12,17 @@
     <title>Project Midnight</title>
         <script>
             // Auth guard: if no user in localStorage, force to login page
-            /*(function(){
+             (function(){
                 try {
-                    var user = localStorage.getItem('midnight_user');
-                    if (!user) {
+                    const { data: {session} } = supabase.auth.getSession();
+                    if (!session) {
                         if (!location.pathname.endsWith('/login.html') && !location.pathname.endsWith('login.html')) {
                             location.href = '/login.html';
                         }
                     }
-                } catch (e) {}
-            })(); */
+                } catch (e) {
+                }
+            })();
         </script>
 </head>
 

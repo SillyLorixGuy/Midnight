@@ -3,3 +3,14 @@ const SUPABASE_ANON_KEY = 'sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH'; // <
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+async function isUserLoggedIn() {
+  const { data: { session } } = await supabase.auth.getSession();
+  return session !== null;
+}
+
+async function getCurrentUser() {
+  const { data: { user } } = await supabase.auth.getUser();
+  return user;
+}
+export { isUserLoggedIn, getCurrentUser };
