@@ -1,52 +1,10 @@
-    // Script to load and display entries in profile.html
-// Uses the template in <section class="entries"> and fills with data from log.json
+import { supabase } from './supabaseClient.js'; 
 
-async function fetchJSON(path) {
-    const res = await fetch(path);
-    return await res.json();
-}
-
-async function imageExists(url) {
-    return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-    });
-}
-
-async function resolvePfp() {
-    try {
-        const data = await fetchJSON('entries/user-info.json');
-        const user = (data && data.users && data.users[0]) || null;
-        let pfp = user && (user['pfp-src'] || user.pfp) ? (user['pfp-src'] || user.pfp).replace(/\\/g, '/') : '';
-        const candidates = [];
-        if (pfp) {
-            candidates.push(pfp);
-            candidates.push(pfp.replace(/^\.\//, ''));
-            candidates.push('/' + pfp.replace(/^\//, ''));
-            const filename = pfp.split('/').pop();
-            if (filename) candidates.push(filename);
-        }
-        candidates.push('pfps/Lori.png');
-        candidates.push('Lori.png');
-
-        for (const c of candidates) {
-            if (!c) continue;
-            // eslint-disable-next-line no-await-in-loop
-            if (await imageExists(c)) return c;
-        }
-    } catch (err) {
-        console.warn('resolvePfp error', err);
-    }
-    return 'pfps/Lori.png';
-}
-
-function formatDate(date, time) {
-    // date: YYYY-MM-DD, time: HH:MM
-    const [year, month, day] = date.split('-');
-    return `${day}.${month}.${year} - ${time}`;
-}
+const { data } = await supabase.from('entries')
+    .select ("*")
+    .order('date', { ascending: false })
+    .order('time', { ascending: false });
+console.log('Entries data from Supabase:', data);
 
 function createEntryElement(entry, pfpSrc) {
     // Use the template from profile.html
@@ -75,18 +33,8 @@ function createEntryElement(entry, pfpSrc) {
 
 async function loadEntries(userName) {
     const entriesSection = document.querySelector('.entries');
-    const log = await fetchJSON('entries/log.json');
     const userEntries = log.entries.filter(e => e.user === userName);
     entriesSection.innerHTML = '';
-    const pfp = await resolvePfp();
-    // Sort entries by date+time (newest first). If time missing, assume 00:00
-    userEntries.sort((a, b) => {
-        const ta = (a.time && a.time.length) ? a.time : '00:00';
-        const tb = (b.time && b.time.length) ? b.time : '00:00';
-        const da = new Date(`${a.date}T${ta}`);
-        const db = new Date(`${b.date}T${tb}`);
-        return db - da; // descending -> newest first
-    });
     userEntries.forEach(entry => {
         entriesSection.appendChild(createEntryElement(entry, pfp));
     });
@@ -116,8 +64,6 @@ async function loadEntries(userName) {
         // expand
         content.dataset.animating = 'true';
         content.removeAttribute('hidden');
-        // force reflow so the class addition animates
-        // eslint-disable-next-line no-unused-expressions
         content.offsetHeight;
         content.classList.add('expanded');
         button.setAttribute('aria-expanded', 'true');
