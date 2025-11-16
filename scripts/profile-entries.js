@@ -1,39 +1,10 @@
-import { supabase } from './supabaseClient.js';
+import { supabase } from './supabaseClient.js'; 
 
-// Script to load and display entries in profile.html
-// Uses the template in <section class="entries"> and fills with data from log.json
-// Get the current user's entries row
-const { data, error } = await supabase
-  .from('entries')
-  .select('*')
-  .single();
-
-
-console.log(data.user_id);
-
-//asynch function 
-
-async function fetchJSON(path) {
-    const res = await fetch(path);
-    return await res.json();
-}
-
-async function imageExists(url) {
-    return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-    });
-}
-
-
-
-function formatDate(date, time) {
-    // date: YYYY-MM-DD, time: HH:MM
-    const [year, month, day] = date.split('-');
-    return `${day}.${month}.${year} - ${time}`;
-}
+const { data } = await supabase.from('entries')
+    .select ("*")
+    .order('date', { ascending: false })
+    .order('time', { ascending: false });
+console.log('Entries data from Supabase:', data);
 
 function createEntryElement(entry, pfpSrc) {
     // Use the template from profile.html
@@ -62,18 +33,8 @@ function createEntryElement(entry, pfpSrc) {
 
 async function loadEntries(userName) {
     const entriesSection = document.querySelector('.entries');
-    const log = await fetchJSON('entries/log.json');
     const userEntries = log.entries.filter(e => e.user === userName);
     entriesSection.innerHTML = '';
-    const pfp = await resolvePfp();
-    // Sort entries by date+time (newest first). If time missing, assume 00:00
-    userEntries.sort((a, b) => {
-        const ta = (a.time && a.time.length) ? a.time : '00:00';
-        const tb = (b.time && b.time.length) ? b.time : '00:00';
-        const da = new Date(`${a.date}T${ta}`);
-        const db = new Date(`${b.date}T${tb}`);
-        return db - da; // descending -> newest first
-    });
     userEntries.forEach(entry => {
         entriesSection.appendChild(createEntryElement(entry, pfp));
     });
@@ -103,8 +64,6 @@ async function loadEntries(userName) {
         // expand
         content.dataset.animating = 'true';
         content.removeAttribute('hidden');
-        // force reflow so the class addition animates
-        // eslint-disable-next-line no-unused-expressions
         content.offsetHeight;
         content.classList.add('expanded');
         button.setAttribute('aria-expanded', 'true');
