@@ -1,5 +1,17 @@
-    // Script to load and display entries in profile.html
+import { supabase } from './supabaseClient.js';
+
+// Script to load and display entries in profile.html
 // Uses the template in <section class="entries"> and fills with data from log.json
+// Get the current user's entries row
+const { data, error } = await supabase
+  .from('entries')
+  .select('*')
+  .single();
+
+
+console.log(data.user_id);
+
+//asynch function 
 
 async function fetchJSON(path) {
     const res = await fetch(path);
@@ -15,32 +27,7 @@ async function imageExists(url) {
     });
 }
 
-async function resolvePfp() {
-    try {
-        const data = await fetchJSON('entries/user-info.json');
-        const user = (data && data.users && data.users[0]) || null;
-        let pfp = user && (user['pfp-src'] || user.pfp) ? (user['pfp-src'] || user.pfp).replace(/\\/g, '/') : '';
-        const candidates = [];
-        if (pfp) {
-            candidates.push(pfp);
-            candidates.push(pfp.replace(/^\.\//, ''));
-            candidates.push('/' + pfp.replace(/^\//, ''));
-            const filename = pfp.split('/').pop();
-            if (filename) candidates.push(filename);
-        }
-        candidates.push('pfps/Lori.png');
-        candidates.push('Lori.png');
 
-        for (const c of candidates) {
-            if (!c) continue;
-            // eslint-disable-next-line no-await-in-loop
-            if (await imageExists(c)) return c;
-        }
-    } catch (err) {
-        console.warn('resolvePfp error', err);
-    }
-    return 'pfps/Lori.png';
-}
 
 function formatDate(date, time) {
     // date: YYYY-MM-DD, time: HH:MM

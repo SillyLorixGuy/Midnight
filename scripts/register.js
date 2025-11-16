@@ -1,4 +1,5 @@
 import { supabase } from './supabaseClient.js';
+
 // register.js
 // Handles user registration using Supabase Auth + Storage + profile table
 
@@ -68,35 +69,79 @@ import { supabase } from './supabaseClient.js';
       // Note: depending on Supabase version, signUpData may look different.
 
       // 2) Upload profile picture to Storage (optional)
+      // We'll only attempt upload if the user is signed in (session present).
       let pfpUrl = null;
-      if (pfpInput && pfpInput.files && pfpInput.files[0]) {
-        const file = pfpInput.files[0];
-        // choose a path: profiles/<user-id>/<timestamp>-filename
-        const userId = (user && user.id) ? user.id : (Date.now() + '-' + Math.random());
-        const filePath = `pfps/${userId}-${Date.now()}-${file.name}`;
-        const { error: uploadErr } = await supabase.storage.from('pfps').upload(filePath, file, { cacheControl: '3600', upsert: false });
-        if (uploadErr) {
-          console.warn('Failed to upload pfp', uploadErr.message);
-        } else {
-          // get public URL (this works if the bucket is public). If bucket is private, use createSignedUrl server-side.
-          const { data } = supabase.storage.from('pfps').getPublicUrl(filePath);
-          pfpUrl = data.publicUrl;
+      try {
+        const { data: currentUserResp } = await supabase.auth.getUser();
+        const currentUser = currentUserResp.user || currentUserResp;
+
+        if (pfpInput && pfpInput.files && pfpInput.files[0] && currentUser && currentUser.id) {
+          const file = pfpInput.files[0];
+          // choose a path: pfps/<user-id>/<timestamp>-filename
+          const userId = currentUser.id;
+          const filePath = `pfps/${userId}-${Date.now()}-${file.name}`;
+          // Quick check: try to list the bucket root to verify it exists and is accessible
+          const { data: listData, error: listErr } = await supabase.storage.from('pfps').list('', { limit: 1 });
+          if (listErr) {
+            console.warn('Storage bucket check failed:', listErr);
+            alert('Profile picture upload failed: storage bucket "pfps" not found or inaccessible. Create a bucket named "pfps" in Supabase Storage and set proper permissions.');
+          } else {
+            // Try uploading. If upload fails, we'll catch and show a helpful message.
+            const { error: uploadErr } = await supabase.storage.from('pfps').upload(filePath, file, { cacheControl: '3600', upsert: false });
+          if (uploadErr) {
+            console.warn('Failed to upload pfp', uploadErr.message || uploadErr);
+            // Friendly guidance for missing bucket
+            if (uploadErr.message && uploadErr.message.toLowerCase().includes('bucket')) {
+              alert('Profile picture upload failed: storage bucket "pfps" not found. Create a bucket named "pfps" in Supabase Storage and set it to public, or leave the picture empty.');
+            }
+          } else {
+            // get public URL (this works if the bucket is public). If bucket is private, use createSignedUrl server-side.
+            const { data } = supabase.storage.from('pfps').getPublicUrl(filePath);
+            pfpUrl = data.publicUrl;
+          }
+          }
         }
+      } catch (e) {
+        console.warn('Could not determine current user for pfp upload:', e);
       }
 
       // 3) Insert a profile row into 'profiles' table linking to the auth user id.
       //    Make sure you created a table `profiles` with id = auth uid (text/uuid), username, email, is_public, pfp_url
-      const profileRow = {
-        id: user.id,
-        username,
-        email,
-        is_public: publicProfile,
-        pfp_url: pfpUrl
-      };
-      const { error: profileErr } = await supabase.from('profiles').insert(profileRow);
-      if (profileErr) {
-        // If insert fails, still continue — user is created in auth; you can inspect and fix table.
-        console.warn('Failed to insert profile row:', profileErr.message);
+      // Attempt to insert the profile row only if we have an active authenticated user session.
+      // If the user is not signed in immediately (e.g. email confirm required), the DB trigger
+      // will create the profiles row server-side.
+      try {
+        const { data: currentUserResp } = await supabase.auth.getUser();
+        const currentUser = currentUserResp.user || currentUserResp;
+        if (currentUser && currentUser.id) {
+          // Diagnostic: print session token existence (not the token itself)
+          try {
+            const { data: sessionData } = await supabase.auth.getSession();
+            console.log('Registration time session present?', !!(sessionData && sessionData.session && sessionData.session.access_token));
+          } catch (e) {
+            console.warn('Could not read session for diagnostics', e);
+          }
+          const profileRow = {
+            user_id: currentUser.id,
+            username,
+            email,
+            visibility: publicProfile,
+            pfp_url: pfpUrl
+          };
+
+          const { error: profileErr } = await supabase.from('profiles').insert(profileRow);
+          if (profileErr) {
+            console.warn('Failed to insert profile row:', profileErr);
+            // If RLS denies insert or other issue occurs, the server-side trigger may still create profile.
+            // Provide a clearer hint to the developer in console
+            console.warn('Profile insert denied. Check that RLS policies on `profiles` allow INSERT when user_id = auth.uid(), and that SUPABASE_URL/ANON_KEY in supabaseClient.js point to the same project where the user was created.');
+          }
+        } else {
+          // No active session — rely on DB trigger to create the profile when the auth user is confirmed.
+          console.log('No active session after signUp; profile creation deferred to DB trigger.');
+        }
+      } catch (e) {
+        console.warn('Error while attempting to create profile row:', e);
       }
 
       alert('Registration successful. Check your email if confirmation is required.');
