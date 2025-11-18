@@ -2,8 +2,6 @@ import { supabase } from './supabaseClient.js';
 
 const { data } = await supabase.from('entries')
     .select ("*")
-    .order('date', { ascending: false })
-    .order('time', { ascending: false });
 console.log('Entries data from Supabase:', data);
 
 function createEntryElement(entry, pfpSrc) {
