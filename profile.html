@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://api.ssps.cajthaml.eu/file/64d9f18f79dad891e8a07c73">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
@@ -28,9 +29,9 @@
 
 <body>
     <nav>
-        <a class="glow70" href="index.html">Midnight</a>
+        <a class="glow" href="index.html">Midnight</a>
         <div class="profile">
-            <a href="profile.html"><img src="pfps/Lori.png" alt="profile"></a> <!-- pfp taken from some database -->
+            <a href="profile.html"><img alt=""></a> <!-- pfp taken from some database -->
             <button id="logout-btn" aria-label="Logout" title="Logout">Logout</button>
         </div>
     </nav>
@@ -38,17 +39,17 @@
         <div class="profile-header">
             <section class="user-info">
                 <img id="pfp" src="" alt="profile picture">
-                <p class="username glow70"></p>
-                <p class="bio glow70"></p>
+                <p class="username glow"></p>
+                <p class="bio glow"></p>
             </section>
             <section class="stats">
                 <div class="chart"></div>
                 <div class="info">
-                    <div class="glow70"></div>
-                    <div class="glow70"></div>
-                    <div class="glow70"></div>
-                    <div class="glow70"></div>
-                    <div class="glow70"></div>
+                    <div class="glow"></div>
+                    <div class="glow"></div>
+                    <div class="glow"></div>
+                    <div class="glow"></div>
+                    <div class="glow"></div>
                 </div>
             </section>
         </div>
@@ -59,6 +60,7 @@
     <footer>
 
     </footer>
+    <script src="scripts/nav-profile.js" type="module"></script>
     <script src="scripts/load-profile.js" type="module"></script>
 </body>
 

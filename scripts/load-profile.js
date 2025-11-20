@@ -78,7 +78,20 @@ async function getEntries(){
 
     const payload = data?.entry;
     if (!payload) return [];
-    return Array.isArray(payload) ? payload : [payload];
+    const entries = Array.isArray(payload) ? payload : [payload];
+    
+    // Sort by date+time descending (most recent first)
+    entries.sort((a, b) => {
+      const dateA = a.date || a.created_at || '';
+      const timeA = a.time || '00:00:00';
+      const dateB = b.date || b.created_at || '';
+      const timeB = b.time || '00:00:00';
+      const datetimeA = `${dateA} ${timeA}`;
+      const datetimeB = `${dateB} ${timeB}`;
+      return datetimeB.localeCompare(datetimeA);
+    });
+    
+    return entries;
   } catch (err) {
     console.error('getEntries error:', err);
     return [];
@@ -128,12 +141,12 @@ function createEntryElement(entry, pfpSrc, profile) {
     <div class="entry-top">
       <div class="entry-user">
         <img src="${escapeHTML(pfpSrc || '')}" alt="">
-        <span class="glow70 entry-user-name">${escapeHTML(author)}</span>
+        <span class="glow entry-user-name">${escapeHTML(author)}</span>
       </div>
       <div class="entry-footer-placeholder"></div>
     </div>
     <div class="entry-title-wrap">
-      <button class="toggle-entry glow70" aria-expanded="false">${escapeHTML(String(title).toUpperCase())}</button>
+      <button class="toggle-entry glow" aria-expanded="false">${escapeHTML(String(title).toUpperCase())}</button>
     </div>
 
     <section class="entry-content" hidden>
@@ -158,7 +171,7 @@ addEventListener('DOMContentLoaded', async () => {
     entriesSection.innerHTML = '';
     if (!entries || entries.length === 0) {
       const p = document.createElement('p');
-      p.className = 'no-entries glow70';
+      p.className = 'no-entries glow';
       p.textContent = 'No entries yet.';
       entriesSection.appendChild(p);
       return;

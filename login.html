@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://api.ssps.cajthaml.eu/file/64d9f18f79dad891e8a07c73">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
@@ -13,14 +14,14 @@
 </head>
 <body>
     <nav>
-        <a class="glow70" href="index.html">Midnight</a>
+        <a class="glow" href="index.html">Midnight</a>
         <div class="profile">
             <a href="profile.html"><img src="pfps/temp-pfp.png"></a> <!-- pfp taken from some database -->
         </div>
     </nav>
     <main>
         <section class="login-box">
-            <h1 class="glow70">Sign in</h1>
+            <h1 class="glow">Sign in</h1>
             <label for="identifier">Email or Username</label>
             <input id="identifier" type="text" placeholder="Enter email or username">
             <label for="password">Password</label>
@@ -29,8 +30,11 @@
             <a href="register.html">Register</a>
         </section>
     </main>
-    <footer></footer>
+    <footer>
+        
+    </footer>
     <script src="scripts/supabaseClient.js" type="module"></script>
+    <script src="scripts/nav-profile.js" type="module"></script>
     <script src="scripts/login.js" type="module"></script>
 </body>
 </html>
