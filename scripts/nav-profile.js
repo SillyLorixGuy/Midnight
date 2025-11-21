@@ -10,7 +10,7 @@ async function updateNavProfile() {
       .from('profiles')
       .select('pfp_url')
       .eq('user_id', user.id)
-      .single();
+      .maybeSingle();
 
     if (error) {
       console.warn('Could not load profile for nav:', error);

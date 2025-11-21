@@ -31,7 +31,7 @@
     <nav>
         <a class="glow" href="index.html">Midnight</a>
         <div class="profile">
-            <a href="profile.html"><img alt=""></a> <!-- pfp taken from some database -->
+            <a href="profile.html"><img src="https://aifxjrcbxtvblqhgsrbs.supabase.co/storage/v1/object/public/pfps/anonymous-avatar-icon-25.jpg"></a> <!-- pfp taken from some database -->
             <button id="logout-btn" aria-label="Logout" title="Logout">Logout</button>
         </div>
     </nav>
@@ -73,6 +73,16 @@
             <p>© 2025 Lorix. All rights reserved.</p>
         </section>
     </footer>
+    <script type="module">
+  import { isUserLoggedIn } from './scripts/supabaseClient.js';
+
+  (async function() {
+    const loggedIn = await isUserLoggedIn();
+    if (!loggedIn) {
+      window.location.href = 'login.html';
+    }
+  })();
+</script>
     <script src="scripts/nav-profile.js" type="module"></script>
     <script src="scripts/load-profile.js" type="module"></script>
 </body>
