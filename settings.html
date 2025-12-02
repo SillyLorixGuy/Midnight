@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/settings.css">
+    <title>Document</title>
+
+    <script>
+        // Auth guard: if no user in localStorage, force to login page
+        //   (function(){
+        //       try {
+        //           const { data: {session} } = supabase.auth.getSession();
+        //           if (!session) {
+        //               if (!location.pathname.endsWith('/login.html') && !location.pathname.endsWith('login.html')) {
+        //                  location.href = '/login.html';
+        //               }
+        //           }
+        //       } catch (e) {
+        //       }
+        //   })();
+    </script>
+</head>
+
+<body>
+    <nav>
+        <a class="glow" href="index.html">Midnight</a>
+        <div class="profile">
+            <a href="profile.html"><img
+                    src="https://aifxjrcbxtvblqhgsrbs.supabase.co/storage/v1/object/public/pfps/anonymous-avatar-icon-25.jpg"></a>
+            <!-- pfp taken from some database -->
+            <button id="logout-btn" aria-label="Logout" title="Logout">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        </div>
+    </nav>
+    <main>
+        <section class="user-info">
+            <img id="pfp" src="" alt="profile picture">
+            <p class="username glow"></p>
+            <p class="bio glow"></p>
+        </section>
+        <hr>
+        <section class="settings">
+            <h2 class="glow">Edit Profile</h2>
+            <div class="profile-editor">
+                <label class="glow">Username</label>
+                <input type="text" name="Username" id="">
+                <label class="glow">Bio</label>
+                <input type="text" name="bio" id="">
+                <label class="glow">Profile picture</label>
+                <input type="file" id="profile-file" hidden>
+                <label for="profile-file" class="file-input-wrap">
+                <i class="fa-solid fa-upload upload-icon glow"></i>
+                <span class="file-label-text">Choose profile picture</span>
+                </label>
+                <button id="save-btn">Keep Changes</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section class="top">
+            <section class="about">
+                <h3 class="gray-glow">Project Midnight</h3>
+                <p class="gray-glow">Times are rough nowdays... everyone needs to vent a little from time to time.</p>
+            </section>
+            <section class="socials">
+                <h3 class="gray-glow">My Socials:</h3>
+                <a class="gray-glow" href="https://www.instagram.com/mr.lorix/"><i class="fa-brands fa-instagram"></i>
+                    <p> mr.lorix</p>
+                </a>
+                <a class="gray-glow"><i class="fa-brands fa-discord"></i>
+                    <p> .lorix</p>
+                </a>
+            </section>
+        </section>
+        <section class="bottom">
+            <p>© 2025 Lorix. All rights reserved.</p>
+        </section>
+    </footer>
+</body>
+<script src="scripts/nav-profile.js" type="module"></script>
+<script src="scripts/load-profile.js" type="module"></script>
+
+</html>

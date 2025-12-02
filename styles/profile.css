@@ -48,7 +48,11 @@
     z-index: 1;
 
 }
-
+.stats i {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
 .info {
     display: flex;
     flex-direction: column;
@@ -71,10 +75,6 @@
     flex-direction: column;
 }
 
-/*.stats .chart{
-
-}
-*/
 .entries {
     display: flex;
     justify-content: center;

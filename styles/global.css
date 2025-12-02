@@ -206,3 +206,23 @@ footer .bottom{
         line-height: 1.6rem;
     }
 }
+/* Hide number input spinners across browsers (Chrome/Safari/Edge/Firefox/IE) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* IE10+ and Edge (legacy) */
+input[type="number"]::-ms-clear,
+input[type="number"]::-ms-expand {
+    display: none;
+}
+
+/* Optional: keep keyboard numeric on mobile while hiding controls */
+input[type="number"] { appearance: textfield; }
