@@ -202,5 +202,8 @@ textarea {
     button{
         margin-top: 1rem;
     }
+    textarea{
+        font-size: 1.1rem;
+    }
     
 }
