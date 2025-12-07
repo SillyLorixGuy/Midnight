@@ -74,7 +74,6 @@
     <script src="scripts/nav-profile.js" type="module"></script>
 <script type="module">
   import { isUserLoggedIn } from './scripts/supabaseClient.js';
-
   (async function() {
     const loggedIn = await isUserLoggedIn();
     if (!loggedIn) {
