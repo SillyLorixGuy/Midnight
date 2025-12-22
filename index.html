@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/index.css">
+    <title>Midnight</title>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="glow">Midnight</a>
+        <section>
+            <a href="profile.html"><img src="https://aifxjrcbxtvblqhgsrbs.supabase.co/storage/v1/object/public/pfps/anonymous-avatar-icon-25.jpg" alt="profile-picture"></a>
+            <a href="">
+                <p class="glow">Log Out</p>
+            </a>
+        </section>
+    </nav>
+
+    <main>
+        <div class="entry-form">
+            <div>
+                <section class="date-inputs">
+                    <div>
+                        <label>Use Current Date</label>
+                        <input type="radio" id="current-date" name="date-selector" checked>
+                    </div>
+                    <div>
+                        <label>Use Past Date</label>
+                        <input type="radio" id="past-date" name="date-selector">
+                    </div>
+                </section>
+                <section class="date-picker">
+                    <input type="number" id="date-DD" name="date" placeholder="DD" min="1" max="31">
+                    <input type="number" id="date-MM" name="date" placeholder="MM" min="1" max="12">
+                    <input type="number" id="date-YYYY" name="date" placeholder="YYYY" min="1900" max="2100">
+                </section>
+            </div>
+            <section class="entry-inputs">
+                <input type="text" name="" id="title" placeholder="Have a title for today?">
+                <textarea name="" id="entry" placeholder="What happened today?"></textarea>
+            </section>
+            <div class="bottom">
+                <section class="mood-input">
+                    <p class="glow">How was today?</p>
+                    <input id="mood-input" type="number" min="1" max="100" placeholder="1-100">
+                </section>
+                <button id="submit-entry-btn" type="button">
+                    <p class="glow">Submit</p>
+                </button>
+            </div>
+        </div>
+        <section class="entries">
+            <h1 class="glow">Entries</h1>
+            <span> </span>
+            <div class="filter-buttons">
+                <button id="filter-show-all">Show all</button>
+                <button id="filter-favorites">Favorites</button>
+                <button id="filter-use-code">Use a code</button>
+            </div>
+            <input type="text" id="access-key-input" placeholder="XXXX - XXXX - XXXX - XXXX - XXXX - XXXX" hidden aria-label="Access code input">
+            <section class="entries-container">
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <section class="top">
+            <section class="about">
+                <h3 class="gray-glow">Project Midnight</h3>
+                <p class="gray-glow">Times are rough nowdays... everyone needs to vent a little from time to time.</p>
+            </section>
+            <section class="socials">
+                <h3 class="gray-glow">My Socials:</h3>
+                <a class="gray-glow" href="https://www.instagram.com/mr.lorix/"><i class="fa-brands fa-instagram"></i>
+                    <p> mr.lorix</p>
+                </a>
+                <a class="gray-glow"><i class="fa-brands fa-discord"></i>
+                    <p> .lorix</p>
+                </a>
+            </section>
+        </section>
+        <section class="bottom">
+            <p>© 2025 Lorix. All rights reserved.</p>
+        </section>
+    </footer>
+    <script src="./src/scripts/supabaseClient.js" type="module"></script>
+    <script src="src/scripts/nav-profile.js" type="module"></script>
+    <script src="src/scripts/entry-logger.js" type="module"></script>
+    <script src="src/scripts/shared-extries.js" type="module"></script>
+    
+</body>
+
+</html>

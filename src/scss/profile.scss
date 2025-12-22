@@ -1,0 +1,265 @@
+@use "./variablses" as var;
+
+.profile-header {
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    gap: 1rem;
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 2rem;
+        z-index: 0;
+
+        img {
+            width: 18rem;
+            height: 18rem;
+            border-radius: 10%;
+            border: 2px solid var.$white;
+            box-shadow:
+                1px 1px 2px rgb(255, 255, 255),
+                0 0 1em rgb(255, 255, 255),
+                0 0 0.2em rgb(255, 255, 255);
+        }
+
+        .username {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var.$white;
+            text-align: left;
+        }
+
+        .bio {
+            font-size: 1.2rem;
+            color: var.$white;
+            text-align: left;
+            width: 60%;
+            text-wrap: wrap;
+        }
+    }
+
+
+}
+
+.stats {
+    display: flex;
+    gap: 2rem;
+    z-index: 1;
+
+    i {
+        font-size: 2rem;
+        color: var.$white;
+        cursor: pointer;
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2rem;
+    margin-right: 2rem;
+    color: var.$white;
+    font-size: 1.5rem;
+
+    .info div {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    & p {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+.entries {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+
+    .entry {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        width: 90%;
+        background-color: var.$primary-color;
+        border: none;
+        border-radius: 10px;
+        color: var.$white;
+        font-size: 1.2rem;
+        box-shadow: 0 0 10px rgb(105, 105, 105);
+        padding: 1rem;
+
+        .entry-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .entry-user {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+
+            img {
+                width: 48px;
+                height: 48px;
+                border-radius: 24px;
+                box-shadow:
+                    1px 1px 2px rgba(255, 255, 255, 0.7),
+                    0 0 1em rgba(255, 255, 255, 0.7),
+                    0 0 0.2em rgba(255, 255, 255, 0.7);
+            }
+        }
+
+        .entry-user-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .entry-title-wrap {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .toggle-entry {
+            font-family: "Orbitron", sans-serif;
+            align-self: center;
+            text-align: center;
+            font-size: 1.6rem;
+            text-decoration: none;
+            background: none;
+            border: none;
+            color: var.$white;
+            cursor: pointer;
+
+            &:hover {
+                color: var.$accent;
+            }
+        }
+
+        .entry-content {
+            max-height: 5000px;
+            overflow: hidden;
+            opacity: 1;
+            transform: translateY(0);
+            transition: max-height 320ms cubic-bezier(.2, .8, .2, 1), opacity 220ms ease, transform 220ms ease;
+            width: 100%;
+
+            &.collapsed {
+                max-height: 0;
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+        }
+
+        .entry-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items:flex-end;
+            width: 100%;
+
+            .entry-date {
+                font-size: 0.9rem;
+                color: var.$gray;
+                padding-bottom: 0.2rem;
+            }
+
+            .favorite-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 1.5rem;
+                color: var.$white;
+                transition: all 0.3s ease;
+                padding: 0.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:hover {
+                    color: var.$accent;
+                    transform: scale(1.1);
+                }
+
+                &.favorited {
+                    color: var.$accent;
+
+                    i {
+                        text-shadow: 0 0 10px var.$accent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+/* Collapsible entry styles */
+
+@media (max-width: 1080px) {
+    .stats {
+        justify-content: center;
+        padding: 0;
+        margin-right: 2rem;
+    }
+
+    .info {
+        width: 50%;
+        padding: 0;
+        margin-right: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    .user-info {
+        align-items: center;
+
+        .bio {
+            text-align: center;
+            width: 90%;
+        }
+    }
+
+    .info {
+        padding-top: 2rem;
+        align-items: center;
+    }
+
+    .entry {
+        width: 90%;
+    }
+}

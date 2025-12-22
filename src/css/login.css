@@ -1,0 +1,91 @@
+.login-box {
+  justify-self: center;
+  background: #1a1a1a;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-radius: 10px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+  max-width: 500px;
+}
+.login-box input {
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  background: #2c2c2c;
+  color: #ffffff;
+}
+.login-box button {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  background: #2c2c2c;
+  color: #ffffff;
+  cursor: pointer;
+}
+.login-box button :hover {
+  background-color: rgb(31.25, 31.25, 31.25);
+}
+.login-box button a {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  background: #2c2c2c;
+  color: #ffffff;
+  cursor: pointer;
+}
+.login-box button a :hover {
+  background-color: rgb(31.25, 31.25, 31.25);
+}
+.login-box button a h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+}
+.login-box button #step2 .login-box {
+  width: 100%;
+  height: 500px;
+  padding: 3rem;
+}
+.login-box button #step2 .login-box .login-box button #step2 .login-box h1 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.login-box button #step2 .login-box .login-box button #step2 .login-box .step-info {
+  text-align: center;
+  padding-bottom: 2rem;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+.login-box button #step2 .login-box .login-box button #step2 .login-box .profile-details {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+.login-box button #step2 .login-box .login-box button #step2 .login-box .profile-details .container {
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.login-box button #step2 .login-box .login-box button #step2 .login-box .profile-details textarea {
+  font-size: 0.9rem;
+  background-color: #2c2c2c;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 0.6rem;
+  max-width: 96%;
+  min-width: 96%;
+  min-height: 50px;
+  max-height: 50px;
+}/*# sourceMappingURL=login.css.map */
