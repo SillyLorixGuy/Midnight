@@ -343,3 +343,59 @@ main {
         }
     }
 }
+@media (max-width: 1080px) {
+    main{
+        .entry-form{
+            #date{
+                width: 100%;
+            }
+            section {
+                input[type="text"]::placeholder{
+                    padding: 1rem 0;
+                    text-align: center;
+                    color: var.$gray;
+                    opacity: 0.7;                    
+                }
+                textarea::placeholder {
+                    text-align: center;
+                    color: var.$gray;
+                    opacity: 0.7;
+                }
+                &.date-inputs{
+                margin: 0;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                }
+                &.date-picker{
+                    align-items: center;
+                    justify-content: center;
+                }
+                &.mood-input{
+                flex-direction: column;
+                }
+            }
+        }
+        .entries{
+            .filter-buttons{
+                flex-direction: column;
+                align-items: center;
+                button{
+                    width: 90%;
+                }
+            }
+            .entries-container{
+                .entry{
+                    width: 90%;
+                    .toggle-entry{
+                        font-size: 1.1rem;
+                }
+            }
+            input#access-key-input{
+                width: 90%;
+                font-size: 0.85rem;
+            }
+        }
+    }
+}
+}
