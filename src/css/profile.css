@@ -181,7 +181,6 @@
   text-shadow: 0 0 10px #cccccc;
 }
 
-/* Collapsible entry styles */
 @media (max-width: 1080px) {
   .stats {
     justify-content: center;
@@ -195,23 +194,22 @@
   }
 }
 @media (max-width: 700px) {
-  .profile-header {
+  main .profile-header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  .user-info {
+  main .profile-header .user-info {
     align-items: center;
+    padding: 2rem 0;
+    border-bottom: 2px solid #9e9e9e;
   }
-  .user-info .bio {
+  main .profile-header .user-info .bio {
     text-align: center;
     width: 90%;
   }
-  .info {
-    padding-top: 2rem;
-    align-items: center;
-  }
-  .entry {
+  main .entries .entry {
     width: 90%;
+    margin-top: 1rem;
   }
 }/*# sourceMappingURL=profile.css.map */

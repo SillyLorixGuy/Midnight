@@ -218,10 +218,6 @@
 }
 
 
-
-
-/* Collapsible entry styles */
-
 @media (max-width: 1080px) {
     .stats {
         justify-content: center;
@@ -237,29 +233,28 @@
 }
 
 @media (max-width: 700px) {
-    .profile-header {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    main{
+        .profile-header {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
 
+            .user-info {
+            align-items: center;
+            padding: 2rem 0;
 
-    }
-
-    .user-info {
-        align-items: center;
-
-        .bio {
-            text-align: center;
-            width: 90%;
+            .bio {
+                text-align: center;
+                width: 90%;
+                }
+                border-bottom: 2px solid var.$gray; 
+            }
         }
-    }
-
-    .info {
-        padding-top: 2rem;
-        align-items: center;
-    }
-
-    .entry {
-        width: 90%;
+        .entries {
+            .entry {
+                width: 90%;
+                margin-top: 1rem;
+                }
+        }
     }
 }

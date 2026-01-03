@@ -326,6 +326,7 @@ main .entries .entries-container .entry .favorite-btn.favorited i {
   }
   main .entry-form section.mood-input {
     flex-direction: column;
+    align-items: flex-start;
   }
   main .entries .filter-buttons {
     flex-direction: column;
@@ -340,8 +341,8 @@ main .entries .entries-container .entry .favorite-btn.favorited i {
   main .entries .entries-container .entry .toggle-entry {
     font-size: 1.1rem;
   }
-  main .entries .entries-container input#access-key-input {
+  main .entries input#access-key-input {
     width: 90%;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 }/*# sourceMappingURL=index.css.map */

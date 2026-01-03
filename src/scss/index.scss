@@ -229,14 +229,14 @@ main {
                 font-size: 1.2rem;
                 box-shadow: 0 0 10px rgb(105, 105, 105);
                 padding: 1rem;
-                
+
                 .entry-top {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     width: 100%;
                 }
-                
+
                 .entry-user {
                     display: flex;
                     align-items: center;
@@ -246,10 +246,10 @@ main {
                         width: 48px;
                         height: 48px;
                         border-radius: 24px;
-                        box-shadow: 
-                        1px 1px 2px rgba(255, 255, 255, 0.7),
-                        0 0 1em rgba(255, 255, 255, 0.7),
-                        0 0 0.2em rgba(255, 255, 255, 0.7);
+                        box-shadow:
+                            1px 1px 2px rgba(255, 255, 255, 0.7),
+                            0 0 1em rgba(255, 255, 255, 0.7),
+                            0 0 0.2em rgba(255, 255, 255, 0.7);
                     }
                 }
 
@@ -343,59 +343,73 @@ main {
         }
     }
 }
+
 @media (max-width: 1080px) {
-    main{
-        .entry-form{
-            #date{
+    main {
+        .entry-form {
+            #date {
                 width: 100%;
             }
+
             section {
-                input[type="text"]::placeholder{
+                input[type="text"]::placeholder {
                     padding: 1rem 0;
                     text-align: center;
                     color: var.$gray;
-                    opacity: 0.7;                    
+                    opacity: 0.7;
                 }
+
                 textarea::placeholder {
                     text-align: center;
                     color: var.$gray;
                     opacity: 0.7;
                 }
-                &.date-inputs{
-                margin: 0;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
+
+                &.date-inputs {
+                    margin: 0;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
                 }
-                &.date-picker{
+
+                &.date-picker {
                     align-items: center;
                     justify-content: center;
                 }
-                &.mood-input{
-                flex-direction: column;
+
+                &.mood-input {
+                    flex-direction: column;
+                    align-items: flex-start;
                 }
             }
         }
-        .entries{
-            .filter-buttons{
+
+        .entries {
+            .filter-buttons {
                 flex-direction: column;
                 align-items: center;
-                button{
+
+                button {
                     width: 90%;
                 }
             }
-            .entries-container{
-                .entry{
+
+            .entries-container {
+                .entry {
                     width: 90%;
-                    .toggle-entry{
+
+                    .toggle-entry {
                         font-size: 1.1rem;
+                    }
                 }
+
+
             }
-            input#access-key-input{
-                width: 90%;
-                font-size: 0.85rem;
+        input#access-key-input {
+
+            width: 90%;
+            font-size: 0.9rem;
             }
         }
     }
-}
 }

@@ -176,6 +176,9 @@ footer {
 @media (max-width: 1080px){
     nav{
         width: 100%;
+        a{
+            padding: 1rem 1rem;
+        }
         section{
             a{
                 padding: inherit 0.5rem;
