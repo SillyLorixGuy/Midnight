@@ -1,0 +1,130 @@
+@use "./variables" as var;
+
+main {
+    hr {
+        width: 90%;
+        height: 2px;
+        background-color: var.$gray;
+        box-shadow:
+            1px 1px 2px rgba(255, 255, 255, 0.11),
+            0 0 1em rgba(255, 255, 255, 0.11),
+            0 0 0.2em rgba(255, 255, 255, 0.11);
+        ;
+    }
+
+    .settings {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        background-color: var.$secondary-color;
+        border-radius: 10px;
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 2rem;
+            color: var.$white;
+        }
+
+        .settings-container {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+
+            label {
+                font-size: 1.2rem;
+                color: var.$white;
+            }
+
+            textarea {
+                resize: none;
+                background-color: var.$primary-color;
+                color: var.$white;
+                border: none;
+                border-radius: 6px;
+                padding: .75rem;
+                font-size: 1rem;
+                box-shadow: 0 0 10px rgb(105, 105, 105);
+            }
+
+            .file-input-wrap {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.4rem;
+                padding: 1rem;
+                background: #1a1a1a;
+                border-radius: 10px;
+                cursor: pointer;
+                box-shadow: 0 0 10px rgb(105, 105, 105);
+                color: rgb(95, 95, 95);
+                text-align: center;
+
+                .upload-icon {
+                    font-size: 2rem;
+                    color: white;
+                }
+
+                .file-label-text {
+                    font-size: 1rem;
+                    color: rgb(180, 180, 180);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    max-width: 100%;
+                }
+
+                input[type=file] {
+                    margin-bottom: 0.7rem;
+                    background-color: #1a1a1a;
+                    border: none;
+                    border-radius: 10px;
+                    color: rgb(95, 95, 95);
+                    font-size: 1.2rem;
+                    box-shadow: 0 0 10px rgb(105, 105, 105);
+                    padding: 1rem;
+                    text-align: center;
+                }
+
+                input[type="file"]::file-selector-button {
+                    display: none;
+                }
+
+                input[type="file"]::-webkit-file-upload-button {
+                    display: none;
+                    -webkit-appearance: none;
+                }
+
+                input[type="file"]::-moz-file-upload-button {
+                    display: none;
+                    -moz-appearance: none;
+                }
+
+                input[type="file"]::-ms-browse {
+                    display: none;
+                }
+
+                input[type="file"] {
+                    cursor: pointer;
+                }
+            }
+            button{
+                font-family: "Orbitron", sans-serif;
+                font-size: 1rem;
+                padding: .75rem;
+                border-radius: 6px;
+                border: none;
+                background: lighten(var.$primary-color, $amount: 20%);
+                color: var.$white;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: lighten(var.$primary-color, 15%);
+                }
+            }
+        }
+    }
+}
