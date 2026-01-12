@@ -156,8 +156,8 @@
         }
 
         .entry-content {
-            max-height: 5000px;
-            overflow: hidden;
+            max-height: none;
+            overflow: visible;
             opacity: 1;
             transform: translateY(0);
             transition: max-height 320ms cubic-bezier(.2, .8, .2, 1), opacity 220ms ease, transform 220ms ease;
@@ -165,6 +165,7 @@
 
             &.collapsed {
                 max-height: 0;
+                overflow: hidden;
                 opacity: 0;
                 transform: translateY(-6px);
             }
@@ -173,6 +174,8 @@
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 1.1rem;
                 line-height: 1.6;
+                padding-bottom: 0.5rem;
+                max-height: 100%;
             }
         }
 
